@@ -1,6 +1,7 @@
 html {
   background-color: #f1f5f9;
   font-family: sans-serif;
+  transition: all 300ms;
 }
 
 body {
@@ -79,4 +80,25 @@ h1 {
   .hamburger {
     display: none;
   }
+}
+
+/* dark mode */
+html.dark {
+  background-color: black;
+  color: white;
+}
+
+.dark .nav-links a {
+  color: white;
+}
+
+/* secret green-screen mode - unused*/
+html.hacker {
+  background-color: black;
+  color: greenyellow;
+  font-family: monospace;
+}
+
+.hacker .nav-links a {
+  color: greenyellow;
 }
