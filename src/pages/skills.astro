@@ -1,0 +1,64 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const pageTitle = "Key Skills";
+
+const skillGroups = [
+  {
+    name: "Server / Application Development",
+    points: [
+      "C#, .NET (inc. Core and Framework), ASP.NET, Windows Forms, LINQ",
+      "Unit and component testing, and Test-Driven Development (nUnit, xUnit)",
+      "Software design and engineering using OOP, DDD and SOLID principles",
+      "HTTP API design with both REST and CQRS patterns",
+    ],
+  },
+  {
+    name: "Web Development",
+    points: [
+      "React, JavaScript (ES6), HTML, CSS, ASP.NET, AJAX",
+      "Node-based toolchains using npm, webpack/Vite, ESLint, Babel",
+      "Testing using Jest/Vitest, Enzyme, React Testing Library, also Selenium",
+    ],
+  },
+  {
+    name: "Azure / Cloud",
+    points: [
+      "Azure services including App Service, Azure Service Bus, Azure Storage, Application Insights, Azure Monitor, Azure Functions, Key Vault",
+      "Cloud CI/CD (Azure DevOps, GitHub Actions), YAML, ARM, Terraform",
+    ],
+  },
+  {
+    name: "Databases / Persistance",
+    points: [
+      "Relational DBs and ORMs (SQL Server, EF Core, Dapper, LINQ to SQL)",
+      "Document DBs using CRUD and Event Sourcing patterns (Cosmos DB)",
+      "SQL Server services (SSAS, SSRS)",
+      "Data processing technologies (Microsoft Fabric, Delta/Parquet, Spark)"
+    ],
+  },
+  {
+    name: "Team Skills / Other",
+    points: [
+      "Agile methodology including SCRUM",
+      "CI/CD including TeamCity, Octopus, Cake, PowerShell, Docker",
+      "Versioning systems (including Git, SVN and CVS)",
+      "Visual Studio, VS Code, Azure Data Studio, MS Office suite"
+    ],
+  },
+];
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  {
+    skillGroups.map((group) => (
+      <div>
+        <strong>{group.name}</strong>
+        <ul>
+          {group.points.map((point) => (
+            <li>{point}</li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+</BaseLayout>

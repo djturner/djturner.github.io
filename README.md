@@ -1,9 +1,6 @@
 # GitHub Pages site
 
-I'm planning to make a personal GitHub Pages site in this repo, using [Astro](https://astro.build/), with automated deployment through GitHub Actions.
-
-Let's see how this goes.
-
+A personal GitHub Pages site, using [Astro](https://astro.build/), with automated deployment through GitHub Actions.
 
 ## Tooling
 - Node.js v20 (primarily for npm)

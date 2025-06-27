@@ -1,0 +1,158 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const pageTitle = "Experience";
+
+const employers = [
+  {
+    name: "RES Group",
+    from: "Jun 2023",
+    to: "Present",
+    background:
+      "RES develops, constructs, and operates large-scale renewable energy projects across the world, to create a future where everyone has access to affordable zero carbon energy. Key clients include BlackRock, Allianz, EDF, Octopus Energy.",
+    role: "Software Developer",
+    projects: [
+      {
+        name: "UNO Data Team",
+        summary:
+          "Maintaining data acquisition pipelines from 300+ renewable energy sites, and provisioning that data at scale to four stakeholder teams. Storage of terabyte-scale datasets with high-performance ingestion and serving data on request. Primary responsibilities:",
+        highlights: [
+          "Ensuring reliable ingest, normalisation and storage of live and aggregated data from many disparate renewable technologies and vendors",
+          "Enabling cost-effective storage of terabyte-scale datasets across multiple datastores, and ensuring performant query by stakeholders",
+          "Taking ownership of and maintaining legacy data systems",
+          "Exploring and evaluating potential future data storage and analytics technology",
+        ],
+      },
+    ],
+  },
+  {
+    name: "Zupa Tech Ltd",
+    alternateName: "formerly Caternet Ltd",
+    from: "Oct 2011",
+    to: "Dec 2022",
+    background:
+      "Zupa is an e-procurement software provider, using Microsoft technologies to create intuitive solutions for the hospitality industry. Key clients include CH&Co and Sanctuary Care, and suppliers such as E-Foods and Bidfood. I was primarily involved in these projects:",
+    role: "Developer",
+    projects: [
+      {
+        name: "Project: zupaPlatform",
+        summary:
+          "Migrating the successful Caternet platform to a cloud-native SaaS microservices architecture, to enhance scalability and engage clients from new sectors. SPA frontend in React, backed by .NET Core microservices on Azure infrastructure. Primary responsibilities:",
+        highlights: [
+          "Delivery of product features over the full software stack, across multiple domains",
+          "Ensuring all code is high-quality and well tested, using static tools and code review ",
+          "Onboarding and supporting developers by providing technical and domain knowledge ",
+          "Running & contributing to refinement sessions, clarifying requirements & user stories",
+        ],
+      },
+      {
+        name: "Project: Caternet",
+        summary:
+          "A one-stop-shop web portal for the hospitality sector, helping caterers modernise their purchasing, reporting, & financial systems. ASP.NET, jQuery, SQL. Primary responsibilities:",
+        highlights: [
+          "Implement new features and bug fixes across the site",
+          "Creating key financial and business reports using SQL Server and SSRS",
+          "Providing third-line support, and responding effectively to live-site incidents",
+          "Maintaining key B2B messaging infrastructure, liaising with partners to resolve issues",
+        ],
+      },
+    ],
+  },
+  {
+    name: "Data Discovery Solutions Ltd",
+    alternateName: "trading as Active Navigation",
+    from: "Mar 2007",
+    to: "May 2011",
+    background:
+      "DDSL enable organisations to take control of their unstructured data through information management and governance. Key clients for this SME include BAE Systems, DSTL, Rio Tinto, BP, UK armed forces and local government. I was primarily involved in these projects:",
+    role: "Software Developer",
+    projects: [
+      {
+        name: "Project: 4.x",
+        summary:
+          "Redeveloped existing software suite as an n-Tier web application using ASP.NET 3.5, AJAX, jQuery and SQL Server, emphasising concurrent usage, scalability, and integration with multiple information formats (initially file shares and SharePoint). Primary responsibilities:",
+        highlights: [
+          "Generating project requirements through face-to-face discussion with clients",
+          "Design and architecture of software client and server components",
+          "Adapting legacy applications to use web services where needed",
+          "Administration of development infrastructure (build server, source control)",
+          "Communicating requirements and domain knowledge to international outsource partners as part of a distributed agile team",
+        ],
+      },
+      {
+        name: "Project: 3.x",
+        summary:
+          "A suite of desktop client applications with DB backend, to visualise, manage, & deduplicate file share data at enterprise scale. C#, WinForms, SQL Server. Primary responsibilities:",
+        highlights: [
+          "Design and implementation of core application functionality",
+          "Prompt and effective response to support requests, and gathering product feedback",
+          "Maintaining and extending SQL Server schema, and creating and optimising queries",
+          "Driving adoption of SCRUM and agile methods within the team (inc. CI, unit testing)",
+          "Setting up and maintaining development infrastructure (build server)",
+        ],
+      },
+    ],
+  },
+  {
+    name: "University of Southampton",
+    from: "Feb 2006",
+    to: "Dec 2006",
+    role: "Project Support Assistant",
+    projects: [
+      {
+        name: "Project: myTea",
+        summary:
+          "Digital workbench for bioinformatics, allowing scientists to capture experimental processes and results with semantic mark-up to be easily shared on the web. Primary responsibilities:",
+        highlights: [
+          "Improving functionality & usability of existing software in response to user feedback",
+          "Incorporating bioinformatic web services to enhance existing software capabilities",
+          "Liaising with academic project partners to refine software requirements",
+        ],
+      },
+      {
+        name: "Project: AKTiveSA",
+        summary:
+          "Researching knowledge-based approaches to information fusion and enhanced situation awareness in humanitarian assistance and disaster relief. Primary responsibilities:",
+        highlights: [
+          "Exploring the use of semantic inference to improve situational awareness in real-time",
+          "Demonstrating software capabilities to conference attendees",
+        ],
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  {
+    employers.map((employer) => (
+      <div>
+        <div class="flex-container" style="justify-content: space-between;">
+          <div>
+            <strong>{employer.name}</strong>{" "}
+            {employer.alternateName ? `(${employer.alternateName})` : ""}
+          </div>
+          <div>
+            <strong>
+              {employer.from} - {employer.to}
+            </strong>
+          </div>
+        </div>
+        <div>{employer.role}</div>
+        <div>{employer.background}</div>
+        {employer.projects.map((project) => (
+          <div>
+            <div>
+              <strong>{project.name}</strong>
+            </div>
+            <div>{project.summary}</div>
+            <ul>
+              {project.highlights.map((highlight) => (
+                <li>{highlight}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    ))
+  }
+</BaseLayout>

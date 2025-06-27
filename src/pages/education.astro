@@ -1,0 +1,81 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const pageTitle = "Education and Qualifications";
+const schools = [
+  {
+    name: "University of Southampton",
+    from: 2001,
+    to: 2005,
+    certs: [
+      {
+        name: "MEng",
+        subjects: [
+          {
+            name: "Computer Science",
+            grade: "2:1 (Hons)",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Pate's Grammar School",
+    from: 1994,
+    to: 2001,
+    certs: [
+      {
+        name: "A Levels",
+        subjects: [
+          {
+            name: "Gen. Studies",
+            grade: "A",
+          },
+          {
+            name: "Physics ",
+            grade: "A",
+          },
+          {
+            name: "Chemistry",
+            grade: "B",
+          },
+          {
+            name: "Mathematics",
+            grade: "B",
+          },
+        ],
+      },
+      {
+        name: "A/S Levels",
+        subjects: [
+          {
+            name: "Information Technology",
+            grade: "C",
+          },
+        ],
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  {
+    schools.map((school) => (
+      <div class="flex-container">
+        <div>
+          {school.from}-{school.to}
+        </div>
+        <div>
+          <div>
+              <strong>{school.name}</strong>
+          </div>
+          {school.certs.map(cert => 
+            <div>
+              <strong>{cert.name}: </strong>{cert.subjects.map((subject) => `${subject.name} - ${subject.grade}`).join(", ")}
+            </div>
+          )}
+        </div>
+      </div>
+    ))
+  }
+</BaseLayout>
