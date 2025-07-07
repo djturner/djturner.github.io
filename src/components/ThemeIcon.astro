@@ -45,10 +45,11 @@
 </style>
 
 <script is:inline>
-  const themeList = ["light", "dark"]; // "hacker" changes layout, not using for now
-  
+  const activeThemeList = ["light", "dark"];
+  const recognisedThemeList = activeThemeList.concat(["hacker"]);  // "hacker" changes layout, not using for now (shh it's a secret)
+
   const applyTheme = (newTheme) => {
-    themeList.filter(e => e != newTheme).forEach(listedTheme => {
+    recognisedThemeList.filter(e => e != newTheme).forEach(listedTheme => {
       document.documentElement.classList.remove(listedTheme);
     })
     document.documentElement.classList.add(newTheme);
@@ -56,7 +57,7 @@
 
   const theme = (() => {
     const localStorageTheme = localStorage?.getItem("theme") ?? "";
-    if (themeList.includes(localStorageTheme)) {
+    if (recognisedThemeList.includes(localStorageTheme)) {
       return localStorageTheme;
     }
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
@@ -70,9 +71,9 @@
   window.localStorage.setItem("theme", theme);
 
   const handleToggleClick = () => {
-    const currentTheme = themeList.find(theme => document.documentElement.classList.contains(theme))
-    const nextThemeIndex = themeList.findIndex(e => e === currentTheme) + 1;
-    const newTheme = themeList[nextThemeIndex] ?? themeList[0];
+    const currentTheme = activeThemeList.find(theme => document.documentElement.classList.contains(theme))
+    const nextThemeIndex = activeThemeList.findIndex(e => e === currentTheme) + 1;
+    const newTheme = activeThemeList[nextThemeIndex] ?? activeThemeList[0];
     applyTheme(newTheme);
 
     localStorage.setItem("theme", newTheme);
